@@ -1,0 +1,47 @@
+<?xml version="1.0"?>
+<project name="fiz" default="jar">
+
+  <tstamp/>
+
+  <property name="compiler.src" value="1.6"/>
+  <property name="compiler.tgt" value="1.6"/>
+
+  <property name="src" location="src"/>
+  <property name="bin" location="bin"/>
+  <property name="lib" location="lib"/>
+
+  <property name="target.jar" value="${ant.project.name}.jar"/>
+
+
+  <target name="compile">
+
+    <mkdir dir="${bin}"/>
+
+    <javac srcdir="${src}" destdir="${bin}" 
+           debug="true" 
+           source="${compiler.src}" 
+           target="${compiler.tgt}">
+
+      <include name="**/*.java"/>
+
+      <classpath>
+        <path location="lib/jogl.util.jar"/>
+      </classpath>
+    </javac>
+
+  </target>
+
+  <target name="jar" depends="compile" description="Create JAR complete with lib classes">
+
+    <jar jarfile="${target.jar}" basedir="${bin}" manifest="${src}/Manifest.mf">
+
+      <zipfileset src="lib/jogl.util.jar"/>
+      <zipfileset src="lib/jogl.core.jar"/>
+      <zipfileset src="lib/gluegen-rt.jar"/>
+    </jar>
+
+    <delete dir="${bin}"/>
+
+  </target>
+
+</project>
