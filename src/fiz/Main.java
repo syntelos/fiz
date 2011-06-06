@@ -48,8 +48,6 @@ public class Main
 
 
 
-
-
     private final FontSet fontsDir;
 
     private volatile int fontsDirFamily = FontSet.FAMILY_MONOSPACED;
@@ -83,8 +81,8 @@ public class Main
         this.addMouseWheelListener(this);
         this.addWindowListener(this);
 
-        this.setBackground(new Color(0.7f,0.0f,0.0f,0.7f));
-        this.setForeground(new Color(1.0f,0.0f,0.0f,1.0f));
+        this.setBackground(Style.BG);
+        this.setForeground(Style.FG);
 
         this.fontsDir = JavaFontLoader.get();
     }
